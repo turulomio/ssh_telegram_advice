@@ -1,0 +1,20 @@
+#!/sbin/openrc-run
+
+description="SSH Monitor sending logins to Telegram"
+
+depend() {
+        need sshd
+}
+
+start() {
+        local pidfile=/var/run/ssh_telegram_advice.pid
+        ebegin "Starting ssh_telegram_advice"
+        start-stop-daemon --pidfile "${pidfile}" --make-pidfile --background --exec /usr/bin/ssh_telegram_advice
+        eend $?
+}
+
+stop() {
+        ebegin "Stopping ssh_telegram_advice"
+        start-stop-daemon --stop --pidfile /var/run/ssh_telegram_advice.pid
+        eend $?
+}

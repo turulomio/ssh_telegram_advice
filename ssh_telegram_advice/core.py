@@ -8,15 +8,20 @@ from os import path
 from pkg_resources import resource_filename
 from requests import post
 from subprocess import check_output
+from sys import exit
 from time import sleep
 
+from signal import signal,  SIGINT
 
 try:
     t=translation('ssh_telegram_advice', resource_filename("ssh_telegram_advice","locale"))
     _=t.gettext
 except:
     _=str
-
+    
+def signal_handler( signal, frame):
+        print(_("You pressed 'Ctrl+C', exiting..."))
+        exit(0)
 
 ## Function used in argparse_epilog
 ## @return String
@@ -44,6 +49,7 @@ def addDebugSystem(level):
 
 def main():
     
+    signal(SIGINT, signal_handler)
     parser=ArgumentParser(description=_('Enables a ssh monitor with login advices in telegram'), epilog=argparse_epilog(), formatter_class=RawTextHelpFormatter)
     parser.add_argument('--version', action='version', version=__version__)
     parser.add_argument('--debug', help=_("Debug program information"), choices=["DEBUG","INFO","WARNING","ERROR","CRITICAL"], default="ERROR")
