@@ -2,7 +2,7 @@
   "header": {
     "comment": "eric project file for project ssh_telegram_advice",
     "copyright": "Copyright (C) 2022 , ",
-    "saved": "2022-04-25, 09:11:46"
+    "saved": "2022-04-25, 14:28:00"
   },
   "project": {
     "AUTHOR": "",
@@ -51,7 +51,8 @@
     "MIXEDLANGUAGE": false,
     "OTHERS": [
       "README.md",
-      ".gitignore"
+      ".gitignore",
+      "ssh_telegram_advice.epj"
     ],
     "OTHERTOOLSPARMS": {},
     "PACKAGERSPARMS": {},
@@ -71,8 +72,7 @@
       "ssh_telegram_advice/__init__.py",
       "ssh_telegram_advice/reusing/file_functions.py",
       "ssh_telegram_advice/reusing/github.py",
-      "ssh_telegram_advice/core.py",
-      "__init__.py"
+      "ssh_telegram_advice/core.py"
     ],
     "SPELLEXCLUDES": "",
     "SPELLLANGUAGE": "en_US",
