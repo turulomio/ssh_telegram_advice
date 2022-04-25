@@ -154,7 +154,7 @@ setup(name='ssh_telegram_advice',
      author_email='turulomio@yahoo.es',
      license='GPL-3',
      packages=['ssh_telegram_advice'],
-     install_requires=["pyinotify", "telethon", "python-telegram-bot"],
+     install_requires=[],
      entry_points = {'console_scripts': [
                             'ssh_telegram_advice=ssh_telegram_advice.core:main',
                         ],
