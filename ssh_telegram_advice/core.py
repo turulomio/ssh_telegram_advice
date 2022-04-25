@@ -26,7 +26,7 @@ def signal_handler( signal, frame):
 ## Function used in argparse_epilog
 ## @return String
 def argparse_epilog():
-    return _("Developed by Mariano Muñoz 2020-{}").format(__versiondate__.year)
+    return _("Developed by Mariano Muñoz 2022-{}").format(__versiondate__.year)
 
 ## Sets debug sustem, needs
 ## @param args It's the result of a argparse     args=parser.parse_args()        

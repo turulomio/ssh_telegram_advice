@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: TooManyFiles\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-04 13:57+0200\n"
+"POT-Creation-Date: 2022-04-25 19:46+0200\n"
 "PO-Revision-Date: 2020-04-03 08:54+0200\n"
 "Last-Translator: trabajo <turulomio@yahoo.es>\n"
 "Language-Team: Spanish <kde-i18n-doc@kde.org>\n"
@@ -18,6 +18,25 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Lokalize 19.12.3\n"
+
+msgid "You pressed 'Ctrl+C', exiting..."
+msgstr ""
+
+msgid "Developed by Mariano Muñoz 2022-{}"
+msgstr ""
+
+msgid "Enables a ssh monitor with login advices in telegram"
+msgstr ""
+
+msgid "Debug program information"
+msgstr "Información de depuración del programa"
+
+#, python-brace-format
+msgid "You must set and configure {0}"
+msgstr ""
+
+msgid "You can find in source code in conf.d directory"
+msgstr ""
 
 #~ msgid "Developed by Mariano Muñoz 2020-{}"
 #~ msgstr "Desarrollado por Mariano Muñoz 2021-{}"
@@ -37,9 +56,6 @@ msgstr ""
 
 #~ msgid "Create example files using unogenerator module"
 #~ msgstr "Crea ficheros de ejemplo usando el módulo de unogenerator"
-
-#~ msgid "Debug program information"
-#~ msgstr "Información de depuración del programa"
 
 #~ msgid "All process took {}"
 #~ msgstr "Todos los procesos tardaron {}"

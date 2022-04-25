@@ -69,13 +69,12 @@ class Procedure(Command):
 
     def run(self):
         print("""Nueva versión:
-  * Cambiar la versión y la fecha en commons.py
+  * Cambiar la versión y la fecha en __init__.py
   * Modificar el Changelog en README
   * python setup.py translate
   * linguist
   * python setup.py translate
   * python setup.py uninstall; python setup.py install
-  * python setup.py documentation
   * python setup.py doxygen
   * git commit -a -m 'ssh_telegram_advice-{0}'
   * git push
