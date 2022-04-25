@@ -1,0 +1,6 @@
+[Telegram]
+token = 
+
+[Logs]
+
+file = /var/log/messages
