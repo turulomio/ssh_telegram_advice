@@ -13,3 +13,6 @@ cur/
 tmp/
 __pycache__/
 *.DS_Store
+build/
+dist/
+ssh_telegram_advice.egg-info/
