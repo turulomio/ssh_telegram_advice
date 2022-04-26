@@ -1,5 +1,11 @@
-# ssh_telegram_advice
+# SSH Telegram Advice
 Logs in telegram ssh logins
+
+## To install you need
+- Create a new bot in your Telegram Account
+- Create a Telegram group to send messages to (With the bot as a user)
+- You need to get chat_id of the group (Sending a message). Look into  https://api.telegram/.org/bot__/getUpdates
+- Configure /etc/ssh_telegram_advice/ssh_telegram_advice, using default template
 
 ## Changelog
 
