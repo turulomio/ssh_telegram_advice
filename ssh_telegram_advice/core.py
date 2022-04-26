@@ -1,4 +1,5 @@
 from .__init__ import __versiondate__, __version__
+from .reusing.datetime_functions import string2dtnaive
 from argparse import ArgumentParser, RawTextHelpFormatter
 from configparser import ConfigParser
 from datetime import datetime, timedelta
@@ -7,7 +8,7 @@ from logging import info, ERROR, WARNING, INFO, DEBUG, CRITICAL, basicConfig
 from os import path
 from pkg_resources import resource_filename
 from requests import post
-from subprocess import check_output
+from subprocess import run
 from sys import exit
 from time import sleep
 
@@ -69,22 +70,34 @@ def main():
     config.read(config_filename)    
     
     while True:
-        cat = check_output("cat /var/log/messages| grep -i sshd", shell=True).decode("UTF-8")
-        
-        send=False
-        lines=cat.split('\n')
+        # Search for sshd logins
+        cat = run("cat /var/log/messages| grep -i sshd", shell=True, capture_output=True)        
+        lines=cat.stdout.decode("UTF-8").split('\n')
+        send=[]
         for line in lines:
-            d=str(datetime.now().year)+" " + line[:-len(line)+15]
-            if line.find('pam_unix(sshd:auth): authentication failure')!=-1 or line.find('pam_unix(sshd:session): session opened')!=-1:
-                try:
-                    nueva=datetime.strptime(d, '%Y %b %d %H:%M:%S')
-                except:
-                    print("error parsing date") 
-                if lastlog<nueva:
-                    lastlog=nueva
-                    send=True
-        if send==True:
-            send_message_with_requests(cat[-1000:])
+            if any(pattern in line for pattern in [
+                'sshd:auth', 
+                'sshd:session', 
+                'Accepted keyboard-interactive/pam', 
+                'onnect', 
+                'Permission denied', 
+            ]):
+                dt=string2dtnaive( line[:-len(line)+15], '%b %d %H:%M:%S')
+                if lastlog<=dt:
+                    lastlog=dt
+                    send.append(line)
+        lastlog=lastlog+timedelta(microseconds=1)# To not repeat lastlogs
+        
+        # Sends 3 lines on message
+        if len(send)>0:
+            message=""
+            for i, line in enumerate(send):
+                message=message+line+"\n"
+                if i==len(send)-1 or i % 3==2:
+                    send_message_with_requests(message)
+                    message=""
+                    
+        # Waits interval
         sleep(float(config["Logs"]["interval"]))
             
 def send_message_with_requests(message):
@@ -93,6 +106,6 @@ def send_message_with_requests(message):
     d={"chat_id": chat_id,  "text": message}
     url = f"https://api.telegram.org/bot{token}/sendMessage"
     r=post(url, d)
-    print("Message sent",  url, r, d)
+    print("Message sent at", datetime.now(),  r, d)
 
     

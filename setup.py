@@ -19,24 +19,11 @@ class Reusing(Command):
     def run(self):
         from sys import path
         path.append("ssh_telegram_advice/reusing")
-        print(self.local)
         if self.local is False:
             from github import download_from_github
             download_from_github('turulomio','reusingcode','python/github.py', 'ssh_telegram_advice/reusing/')
-            download_from_github('turulomio','reusingcode','python/casts.py', 'ssh_telegram_advice/reusing/')
             download_from_github('turulomio','reusingcode','python/datetime_functions.py', 'ssh_telegram_advice/reusing/')
-            download_from_github('turulomio','reusingcode','python/listdict_functions.py', 'ssh_telegram_advice/reusing/')
             download_from_github('turulomio','reusingcode','python/file_functions.py', 'ssh_telegram_advice/reusing/')
-            download_from_github('turulomio','reusingcode','python/decorators.py', 'ssh_telegram_advice/reusing/')
-            download_from_github('turulomio','reusingcode','python/libmanagers.py', 'ssh_telegram_advice/reusing/')
-            download_from_github('turulomio','reusingcode','python/percentage.py', 'ssh_telegram_advice/reusing/')
-            download_from_github('turulomio','reusingcode','python/currency.py', 'ssh_telegram_advice/reusing/')
-        
-        from file_functions import replace_in_file
-        replace_in_file("ssh_telegram_advice/reusing/casts.py","from currency","from ssh_telegram_advice.reusing.currency")
-        replace_in_file("ssh_telegram_advice/reusing/casts.py","from percentage","from ssh_telegram_advice.reusing.percentage")
-        replace_in_file("ssh_telegram_advice/reusing/listdict_functions.py","from casts","from ssh_telegram_advice.reusing.casts")
-
 
 ## Class to define doc command
 class Translate(Command):
