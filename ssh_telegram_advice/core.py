@@ -59,7 +59,7 @@ def main():
     config_filename="/etc/ssh_telegram_advice/ssh_telegram_advice"
     addDebugSystem(args.debug)
         
-    lastlog=datetime.now()-timedelta(days=1)
+    lastlog=datetime.now()-timedelta(minutes=30)
     global config
     if not path.exists(config_filename):
         print(_("You must set and configure {0}").format(config_filename))
@@ -68,6 +68,7 @@ def main():
     
     config = ConfigParser()
     config.read(config_filename)    
+    print(_("Starting to monitor logs from {0}").format(lastlog))
     
     while True:
         # Search for sshd logins

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-25 20:16+0200\n"
+"POT-Creation-Date: 2022-04-28 17:40+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -34,4 +34,8 @@ msgid "You must set and configure {0}"
 msgstr ""
 
 msgid "You can find in source code in conf.d directory"
+msgstr ""
+
+#, python-brace-format
+msgid "Starting to monitor logs from {0}"
 msgstr ""
