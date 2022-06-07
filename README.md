@@ -8,6 +8,9 @@ Logs in telegram ssh logins
 - Configure /etc/ssh_telegram_advice/ssh_telegram_advice, using default template
 
 ## Changelog
+### 0.3.0 (2022-06-07)
+- Added my internal and public ip to messages end
+
 ### 0.2.0 (2022-04-28)
 - Messages are now send in groups of 3, when needed.
 
