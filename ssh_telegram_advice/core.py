@@ -7,7 +7,8 @@ from gettext import translation
 from logging import info, ERROR, WARNING, INFO, DEBUG, CRITICAL, basicConfig
 from os import path
 from pkg_resources import resource_filename
-from requests import post
+from requests import post, get
+from socket import socket,  AF_INET, SOCK_DGRAM
 from subprocess import run
 from sys import exit
 from time import sleep
@@ -91,15 +92,33 @@ def main():
         
         # Sends 3 lines on message
         if len(send)>0:
+            public_ip=get_public_ip()
+            internal_ip=get_internal_ip()
             message=""
             for i, line in enumerate(send):
-                message=message+line+"\n"
+                message=message + line + "\n"
                 if i==len(send)-1 or i % 3==2:
+                    message=message  + f"\nMy internal ip: {internal_ip}\nMy public ip: {public_ip}" 
                     send_message_with_requests(message)
                     message=""
                     
         # Waits interval
         sleep(float(config["Logs"]["interval"]))
+        
+def get_public_ip():
+    """    
+        Gets public ip using API in ipify.org
+    """
+    return get('https://api.ipify.org').text
+    
+def get_internal_ip():
+    """
+        Gets internal ip 
+    """
+    s= socket(AF_INET, SOCK_DGRAM)
+    s.connect(("www.google.com", 80))
+    return s.getsockname()[0]
+
             
 def send_message_with_requests(message):
     token= config["Telegram"]["token"]
